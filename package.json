@@ -5,9 +5,12 @@
   "main": "build.js",
   "scripts": {
     "build": "node build.js",
-    "dev": "node build.js && npx serve public"
+    "dev": "node build.js && vite public"
   },
   "keywords": [],
   "author": "Bedanta",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^8.0.8"
+  }
 }
