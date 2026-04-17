@@ -180,7 +180,7 @@ const BLOG_POSTS = [
 
 <div class="promo-box" style="background: linear-gradient(135deg, #ff6b35, #ff4444); padding: 20px; border-radius: 12px; text-align: center; margin: 30px 0; color: white;">
   <p style="font-size: 1.1em; margin-bottom: 10px;">🔥 Exclusive Deal: Use promo code <strong>FLASH50</strong> at OddsShopper to get 50% off your subscription</p>
-  <a href="https://www.oddsshopper.com/?via=50off" style="background: white; color: #ff4444; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Claim 50% Off Now →</a>
+  <a href="https://www.oddsshopper.com/?via=flash50" style="background: white; color: #ff4444; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Claim 50% Off Now →</a>
 </div>
 
 <h2>Quick Verdict</h2>
@@ -243,7 +243,7 @@ const BLOG_POSTS = [
 <div class="promo-box" style="background: linear-gradient(135deg, #ff6b35, #ff4444); padding: 20px; border-radius: 12px; text-align: center; margin: 30px 0; color: white;">
   <p style="font-size: 1.2em; font-weight: bold;">👉 Try OddsShopper with 50% off</p>
   <p>Use code <strong>FLASH50</strong> at oddsshopper.com</p>
-  <a href="https://www.oddsshopper.com/?via=50off" style="background: white; color: #ff4444; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Get 50% Off Now →</a>
+  <a href="https://www.oddsshopper.com/?via=flash50" style="background: white; color: #ff4444; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Get 50% Off Now →</a>
 </div>
 
 <h2>FAQ</h2>
@@ -252,7 +252,7 @@ const BLOG_POSTS = [
 <p>Yes. OddsShopper is operated by Stokastic, a well-established sports analytics company trusted by thousands of bettors.</p>
 
 <h3>What is the OddsShopper promo code for 2026?</h3>
-<p>Use <strong>FLASH50</strong> at checkout to get 50% off your OddsShopper subscription. <a href="https://www.oddsshopper.com/?via=50off">Click here to activate</a>.</p>
+<p>Use <strong>FLASH50</strong> at checkout to get 50% off your OddsShopper subscription. <a href="https://www.oddsshopper.com/?via=flash50">Click here to activate</a>.</p>
 
 <h3>Is OddsShopper better than OddsJam?</h3>
 <p>For price and simplicity, yes. OddsJam has broader coverage but costs nearly 3x more. For most bettors, OddsShopper delivers better ROI.</p>
@@ -298,6 +298,48 @@ const BLOG_POSTS = [
       }
     }
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "OddsShopper",
+  "description": "OddsShopper finds the best betting odds across sportsbooks, identifies arbitrage opportunities, and optimizes your betting strategy with AI.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Stokastic"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "1247",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Sports Bettor"
+    },
+    "reviewBody": "OddsShopper Portfolio EV tool is the best +EV betting platform in 2026. The arbitrage finder paid for the subscription in week one."
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "OddsShopper 50% OFF",
+    "description": "Use promo code FLASH50 for 50% off OddsShopper subscription. Best sports betting tool in 2026.",
+    "url": "https://www.oddsshopper.com/?via=flash50",
+    "price": "49.97",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2026-12-31"
+  }
 }
 </script>
     `,

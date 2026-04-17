@@ -18,7 +18,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
 // ── Shared Pieces ───────────────────────────
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">`;
-const BANNER = `<div id="promo-banner"><a href="https://www.oddsshopper.com/?via=50off" target="_blank" rel="noopener">🔥 EXCLUSIVE: Get 50% Off OddsShopper with code FLASH50</a><button onclick="document.getElementById('promo-banner').style.display='none'">&times;</button></div>`;
+const BANNER = `<div id="promo-banner"><a href="https://www.oddsshopper.com/?via=flash50" target="_blank" rel="noopener">🔥 EXCLUSIVE: Get 50% Off OddsShopper with code FLASH50</a><button onclick="document.getElementById('promo-banner').style.display='none'">&times;</button></div>`;
 const NAV = BANNER + `<nav class="nav"><div class="nav-inner"><a class="logo" href="/">get<span>codes</span></a><div class="nav-links"><a href="/blog/">Blog</a><a href="https://instagram.com/bedanta.exp" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/bedanta" target="_blank" rel="noopener">X</a><a href="https://youtube.com/@bedanta" target="_blank" rel="noopener">YouTube</a></div></div></nav>`;
 const TOAST = `<div class="toast" id="toast"></div>`;
 const FOOTER = `<footer class="footer"><div>&copy; 2026 GetCodes by Bedanta</div><div class="footer-links"><a href="/blog/">Blog</a><a href="https://instagram.com/bedanta.exp" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/bedanta" target="_blank" rel="noopener">X</a><a href="https://youtube.com/@bedanta" target="_blank" rel="noopener">YouTube</a></div></footer>`;
@@ -110,7 +110,7 @@ DEALS.forEach(deal => {
   const related = DEALS.filter(d => d.category === deal.category && d.slug !== deal.slug).slice(0, 3);
 
   const faqSchema = deal.faq?.length > 0 ? `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": deal.faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })) })}` + '</script>' : '';
-  const productSchema = `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Product", "name": deal.name, "description": deal.about, "offers": [{ "@type": "Offer", "name": `${deal.name} ${deal.badge}`, "description": deal.description, "url": deal.url }] })}</script>`;
+  const productSchema = deal.customSchema || `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Product", "name": deal.name, "description": deal.about, "offers": [{ "@type": "Offer", "name": `${deal.name} ${deal.badge}`, "description": deal.description, "url": deal.url }] })}</script>`;
 
   const faqHTML = deal.faq?.length > 0 ? `<h2 class="sec-title">Frequently asked questions</h2><div class="faq">${deal.faq.map(f => `<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">${esc(f.q)}</div><div class="faq-a">${esc(f.a)}</div></div>`).join('')}</div>` : '';
 
