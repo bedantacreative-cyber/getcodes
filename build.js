@@ -10,7 +10,7 @@ const path = require('path');
 const DEALS = require('./deals.js');
 const BLOG_POSTS = require('./blog-posts.js');
 
-const OUT = path.join(__dirname, 'public');
+const OUT = path.join(__dirname, 'dist');
 
 // Clean & recreate output
 if (fs.existsSync(OUT)) fs.rmSync(OUT, { recursive: true });
@@ -18,19 +18,21 @@ fs.mkdirSync(OUT, { recursive: true });
 
 // ── Shared Pieces ───────────────────────────
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">`;
-const NAV = `<nav class="nav"><div class="nav-inner"><a class="logo" href="/">get<span>codes</span></a><div class="nav-links"><a href="/blog/">Blog</a><a href="https://instagram.com/bedanta.exp" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/bedanta" target="_blank" rel="noopener">X</a><a href="https://youtube.com/@bedanta" target="_blank" rel="noopener">YouTube</a></div></div></nav>`;
+const BANNER = `<div id="promo-banner"><a href="https://www.oddsshopper.com/?via=50off" target="_blank" rel="noopener">🔥 EXCLUSIVE: Get 50% Off OddsShopper with code SCORE</a><button onclick="document.getElementById('promo-banner').style.display='none'">&times;</button></div>`;
+const NAV = BANNER + `<nav class="nav"><div class="nav-inner"><a class="logo" href="/">get<span>codes</span></a><div class="nav-links"><a href="/blog/">Blog</a><a href="https://instagram.com/bedanta.exp" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/bedanta" target="_blank" rel="noopener">X</a><a href="https://youtube.com/@bedanta" target="_blank" rel="noopener">YouTube</a></div></div></nav>`;
 const TOAST = `<div class="toast" id="toast"></div>`;
 const FOOTER = `<footer class="footer"><div>&copy; 2026 GetCodes by Bedanta</div><div class="footer-links"><a href="/blog/">Blog</a><a href="https://instagram.com/bedanta.exp" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/bedanta" target="_blank" rel="noopener">X</a><a href="https://youtube.com/@bedanta" target="_blank" rel="noopener">YouTube</a></div></footer>`;
 const JS_CODE = `function revealCode(btn,code){btn.textContent=code;btn.classList.add('revealed');navigator.clipboard.writeText(code).then(()=>{setTimeout(()=>{btn.textContent='Copied!';btn.classList.remove('revealed');btn.classList.add('copied');showToast('Code "'+code+'" copied!');setTimeout(()=>{btn.textContent=code;btn.classList.remove('copied');btn.classList.add('revealed')},2000)},300)}).catch(()=>{showToast('Code revealed!')})}function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}`;
 
-function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
 // ── Shared CSS ──────────────────────────────
 const CSS = `*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--surface:#0B0B0B;--surface-low:#131313;--surface-mid:#181818;--surface-high:#222;--surface-bright:#2E2E2E;--primary:#75FF9E;--primary-dim:#5CE080;--primary-container:#00E676;--on-primary:#003918;--on-primary-fixed:#00210B;--on-surface:#F0ECF0;--on-surface-var:#B8B3BD;--on-surface-dim:#7A7680;--font-display:'Manrope',system-ui,sans-serif;--font-body:'DM Sans','Manrope',system-ui,sans-serif;--radius:0.75rem}
 html{scroll-behavior:smooth}body{background:var(--surface);color:var(--on-surface);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--primary-container);color:var(--on-primary)}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,11,11,.75);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(11,11,11,.75);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+#promo-banner{background:linear-gradient(270deg,#E50914,#B20710,#ff4b2b);background-size:200% 200%;animation:bgPulse 4s ease infinite;color:#fff;text-align:center;padding:.6rem 1rem;font-weight:600;font-size:.85rem;display:flex;justify-content:center;align-items:center;position:relative;font-family:var(--font-display)}#promo-banner a{color:#fff;text-decoration:none;flex:1;transition:opacity .2s}#promo-banner a:hover{opacity:.85}#promo-banner button{background:0 0;border:none;color:#fff;cursor:pointer;font-size:1.2rem;line-height:1;position:absolute;right:1rem}@keyframes bgPulse{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 clamp(1rem,4vw,2.5rem)}
 .logo{font-family:var(--font-display);font-weight:800;font-size:1.2rem;letter-spacing:-.03em;color:var(--on-surface);text-decoration:none}.logo span{color:var(--primary)}
 .nav-links{display:flex;gap:1.2rem;align-items:center}.nav-links a{font-size:.8rem;color:var(--on-surface-dim);text-decoration:none;transition:color .2s}.nav-links a:hover{color:var(--primary)}
@@ -107,10 +109,10 @@ DEALS.forEach(deal => {
   fs.mkdirSync(dir, { recursive: true });
   const related = DEALS.filter(d => d.category === deal.category && d.slug !== deal.slug).slice(0, 3);
 
-  const faqSchema = deal.faq?.length > 0 ? `<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":deal.faq.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))})}` + '</script>' : '';
-  const productSchema = `<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"Product","name":deal.name,"description":deal.about,"offers":[{"@type":"Offer","name":`${deal.name} ${deal.badge}`,"description":deal.description,"url":deal.url}]})}</script>`;
+  const faqSchema = deal.faq?.length > 0 ? `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": deal.faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })) })}` + '</script>' : '';
+  const productSchema = `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Product", "name": deal.name, "description": deal.about, "offers": [{ "@type": "Offer", "name": `${deal.name} ${deal.badge}`, "description": deal.description, "url": deal.url }] })}</script>`;
 
-  const faqHTML = deal.faq?.length > 0 ? `<h2 class="sec-title">Frequently asked questions</h2><div class="faq">${deal.faq.map(f=>`<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">${esc(f.q)}</div><div class="faq-a">${esc(f.a)}</div></div>`).join('')}</div>` : '';
+  const faqHTML = deal.faq?.length > 0 ? `<h2 class="sec-title">Frequently asked questions</h2><div class="faq">${deal.faq.map(f => `<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">${esc(f.q)}</div><div class="faq-a">${esc(f.a)}</div></div>`).join('')}</div>` : '';
 
   const actionBtn = deal.codeType === 'link'
     ? `<a class="btn-code" href="${deal.url}" target="_blank" rel="noopener nofollow" style="text-align:center;text-decoration:none">Activate Deal</a>`
@@ -129,13 +131,13 @@ ${FONTS}${productSchema}${faqSchema}
 ${NAV}${TOAST}
 <div class="wrap">
 <div class="breadcrumb"><a href="/">GetCodes</a> &rsaquo; <a href="/#${deal.catSlug}">${esc(deal.category)}</a> &rsaquo; ${esc(deal.name)}</div>
-<section class="brand-hero"><h1>${esc(titleTag.replace(/ \(Verified.*$/,''))}</h1><span class="bcat">${esc(deal.category)}</span></section>
+<section class="brand-hero"><h1>${esc(titleTag.replace(/ \(Verified.*$/, ''))}</h1><span class="bcat">${esc(deal.category)}</span></section>
 <p class="brand-about">${esc(deal.about)}</p>
 <h2 class="sec-title">1 active ${deal.codeType === 'code' ? 'code' : 'deal'}</h2>
 <div class="brand-code"><div class="discount">${esc(deal.badge)}</div><p class="bdesc">${esc(deal.description)}</p>
 <div class="card-actions">${actionBtn}<a class="btn-visit" href="${deal.url}" target="_blank" rel="noopener nofollow">Visit ${esc(deal.name)} &rarr;</a></div>
 <div class="card-meta" style="margin-top:.5rem"><span class="vdot"></span> Verified &bull; April 2026</div></div>
-<div class="tag-list">${deal.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
+<div class="tag-list">${deal.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
 ${faqHTML}
 ${related.length > 0 ? `<h2 class="sec-title">Related deals</h2><div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
 </div>${FOOTER}<script>${JS_CODE}</script></body></html>`;
@@ -182,7 +184,7 @@ ${FONTS}${articleSchema}
 <style>${CSS}</style></head><body>
 ${NAV}${TOAST}
 <div class="wrap">
-<div class="breadcrumb"><a href="/">GetCodes</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; ${esc(post.title.length > 50 ? post.title.slice(0,50)+'...' : post.title)}</div>
+<div class="breadcrumb"><a href="/">GetCodes</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; ${esc(post.title.length > 50 ? post.title.slice(0, 50) + '...' : post.title)}</div>
 <div class="blog-header">
 <h1>${esc(post.title)}</h1>
 <div class="blog-meta"><span>${post.category}</span><span>${post.date}</span></div>
@@ -227,7 +229,7 @@ console.log('Building homepage...');
 
 const categories = [...new Set(DEALS.map(d => d.category))];
 const catChips = categories.map(c => {
-  const slug = c.toLowerCase().replace(/&/g,'').replace(/\s+/g,'-').replace(/-+/g,'-');
+  const slug = c.toLowerCase().replace(/&/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
   return `<a class="cat-chip" href="#${slug}">${esc(c)}</a>`;
 }).join('');
 
@@ -235,7 +237,7 @@ const featuredCards = DEALS.filter(d => d.featured).map(cardHTML).join('');
 
 const categorySections = categories.map(cat => {
   const catDeals = DEALS.filter(d => d.category === cat);
-  const slug = cat.toLowerCase().replace(/&/g,'').replace(/\s+/g,'-').replace(/-+/g,'-');
+  const slug = cat.toLowerCase().replace(/&/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
   return `<h2 class="sec-title" id="${slug}">${esc(cat)} <span class="count">${catDeals.length}</span></h2><div class="grid">${catDeals.map(cardHTML).join('')}</div>`;
 }).join('');
 
@@ -244,21 +246,23 @@ const marqueeLinks = DEALS.map(d => `<a href="/${d.slug}/">${esc(d.name)}</a>`).
 const blogSection = BLOG_POSTS.length > 0 ? `
 <h2 class="sec-title">From the blog</h2>
 <div class="blog-grid" style="margin-bottom:1.5rem">
-${BLOG_POSTS.slice(0,3).map(post => `<a class="blog-card" href="/blog/${post.slug}/">
+${BLOG_POSTS.slice(0, 3).map(post => `<a class="blog-card" href="/blog/${post.slug}/">
 <h3>${esc(post.title)}</h3>
 <p>${esc(post.metaDescription)}</p>
 <div class="blog-card-meta"><span>${post.category}</span><span>${post.date}</span></div>
 </a>`).join('')}
 </div>` : '';
 
-const searchData = JSON.stringify(DEALS.map(d => ({n:d.name,s:d.slug,c:d.category,b:d.badge,a:d.abbr})));
+const searchData = JSON.stringify(DEALS.map(d => ({ n: d.name, s: d.slug, c: d.category, b: d.badge, a: d.abbr })));
 
-const faqSchemaHome = JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-  {"@type":"Question","name":"Are GetCodes promo codes verified?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every code on GetCodes is manually tested and verified before listing. We update codes monthly and remove expired ones."}},
-  {"@type":"Question","name":"How do I use a coupon code from GetCodes?","acceptedAnswer":{"@type":"Answer","text":"Click 'Get Code' to reveal and copy the code, then paste it at checkout. For link-activated deals, click 'Activate Deal' and the discount applies automatically."}},
-  {"@type":"Question","name":"What types of tools does GetCodes cover?","acceptedAnswer":{"@type":"Answer","text":"GetCodes covers AI video tools, AI coding platforms, SEO tools, social media marketing, automation, hosting, website builders, and trading & finance platforms."}},
-  {"@type":"Question","name":"How often are codes updated?","acceptedAnswer":{"@type":"Answer","text":"All codes are verified at least once per month. Featured deals are checked weekly."}}
-]});
+const faqSchemaHome = JSON.stringify({
+  "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    { "@type": "Question", "name": "Are GetCodes promo codes verified?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every code on GetCodes is manually tested and verified before listing. We update codes monthly and remove expired ones." } },
+    { "@type": "Question", "name": "How do I use a coupon code from GetCodes?", "acceptedAnswer": { "@type": "Answer", "text": "Click 'Get Code' to reveal and copy the code, then paste it at checkout. For link-activated deals, click 'Activate Deal' and the discount applies automatically." } },
+    { "@type": "Question", "name": "What types of tools does GetCodes cover?", "acceptedAnswer": { "@type": "Answer", "text": "GetCodes covers AI video tools, AI coding platforms, SEO tools, social media marketing, automation, hosting, website builders, and trading & finance platforms." } },
+    { "@type": "Question", "name": "How often are codes updated?", "acceptedAnswer": { "@type": "Answer", "text": "All codes are verified at least once per month. Featured deals are checked weekly." } }
+  ]
+});
 
 const homepageHTML = `<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -295,7 +299,7 @@ ${NAV}${TOAST}
 <div class="search-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="text" id="search" placeholder="Search tools — Submagic, HeyGen, Emergent..." autocomplete="off"><div class="search-results" id="sr"></div></div>
 </section>
 <div class="cats"><a class="cat-chip active" href="#featured">Featured</a>${catChips}</div>
-<h2 class="sec-title" id="featured">Featured deals <span class="count">${DEALS.filter(d=>d.featured).length}</span></h2>
+<h2 class="sec-title" id="featured">Featured deals <span class="count">${DEALS.filter(d => d.featured).length}</span></h2>
 <div class="grid">${featuredCards}</div>
 ${categorySections}
 <h2 class="sec-title">How it works</h2>
@@ -336,12 +340,12 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), sitemap);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://getcodes.online/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, 'google1038d475c843ced0.html'), 'google-site-verification: google1038d475c843ced0.html');
-// fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({cleanUrls:true,trailingSlash:true,headers:[{source:"/(.*)",headers:[{key:"X-Content-Type-Options",value:"nosniff"},{key:"X-Frame-Options",value:"DENY"}]},{source:"/sitemap.xml",headers:[{key:"Content-Type",value:"application/xml"}]}]},null,2));
+fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({ cleanUrls: true, trailingSlash: true, headers: [{ source: "/(.*)", headers: [{ key: "X-Content-Type-Options", value: "nosniff" }, { key: "X-Frame-Options", value: "DENY" }] }, { source: "/sitemap.xml", headers: [{ key: "Content-Type", value: "application/xml" }] }] }, null, 2));
 
-console.log('  ✅ sitemap.xml, robots.txt, google verification');
+console.log('  ✅ sitemap.xml, robots.txt, vercel.json, google verification');
 
 // ── Summary ─────────────────────────────────
 const totalFiles = 1 + DEALS.length + BLOG_POSTS.length + 1 + 4; // home + tools + posts + blog index + static
-console.log(`\n🎉 Done! Built ${totalFiles} files into ./public/`);
+console.log(`\n🎉 Done! Built ${totalFiles} files into ./dist/`);
 console.log(`   ${DEALS.length} tool pages + ${BLOG_POSTS.length} blog posts + homepage + blog index`);
 console.log(`   ${allURLs.length} URLs in sitemap\n`);
