@@ -139,6 +139,7 @@ ${NAV}${TOAST}
 <div class="card-meta" style="margin-top:.5rem"><span class="vdot"></span> Verified &bull; April 2026</div></div>
 <div class="tag-list">${deal.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
 ${faqHTML}
+${deal.relatedBlogs ? `<h2 class="sec-title">Related Guides</h2><div class="blog-grid" style="margin-bottom:1.5rem">${deal.relatedBlogs.map(s=>{const p=BLOG_POSTS.find(b=>b.slug===s);return p?`<a class="blog-card" href="/blog/${p.slug}/"><h3>${esc(p.title)}</h3><p>${esc(p.metaDescription)}</p><div class="blog-card-meta"><span>${p.category}</span><span>${p.date}</span></div></a>`:''}).join('')}</div>` : ''}
 ${related.length > 0 ? `<h2 class="sec-title">Related deals</h2><div class="grid">${related.map(cardHTML).join('')}</div>` : ''}
 </div>${FOOTER}<script>${JS_CODE}</script></body></html>`;
 
