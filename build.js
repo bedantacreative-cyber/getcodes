@@ -336,9 +336,9 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), sitemap);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://getcodes.online/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, 'google1038d475c843ced0.html'), 'google-site-verification: google1038d475c843ced0.html');
-fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({cleanUrls:true,trailingSlash:true,headers:[{source:"/(.*)",headers:[{key:"X-Content-Type-Options",value:"nosniff"},{key:"X-Frame-Options",value:"DENY"}]},{source:"/sitemap.xml",headers:[{key:"Content-Type",value:"application/xml"}]}]},null,2));
+// fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({cleanUrls:true,trailingSlash:true,headers:[{source:"/(.*)",headers:[{key:"X-Content-Type-Options",value:"nosniff"},{key:"X-Frame-Options",value:"DENY"}]},{source:"/sitemap.xml",headers:[{key:"Content-Type",value:"application/xml"}]}]},null,2));
 
-console.log('  ✅ sitemap.xml, robots.txt, vercel.json, google verification');
+console.log('  ✅ sitemap.xml, robots.txt, google verification');
 
 // ── Summary ─────────────────────────────────
 const totalFiles = 1 + DEALS.length + BLOG_POSTS.length + 1 + 4; // home + tools + posts + blog index + static

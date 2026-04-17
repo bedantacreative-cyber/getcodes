@@ -1,9 +1,6 @@
 {
-  "buildCommand": "pnpm install && pnpm run build",
+  "buildCommand": "node build.js",
   "outputDirectory": "public",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
   "cleanUrls": true,
   "trailingSlash": true,
   "headers": [
