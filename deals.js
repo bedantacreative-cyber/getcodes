@@ -4,6 +4,7 @@ const DEALS = [
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "OddsShopper",
+  "image": "https://awesemostorage.blob.core.windows.net/assets/landing/OS_bystokastic_logotype.svg",
   "description": "OddsShopper finds the best betting odds across sportsbooks, identifies arbitrage opportunities, and optimizes your betting strategy with AI.",
   "brand": {
     "@type": "Brand",
@@ -37,7 +38,33 @@ const DEALS = [
     "price": "49.97",
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock",
-    "priceValidUntil": "2026-12-31"
+    "priceValidUntil": "2026-12-31",
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "US",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "USD"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 0,
+          "unitCode": "DAY"
+        }
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "US"
+      }
+    }
   }
 }
 </script>`},
