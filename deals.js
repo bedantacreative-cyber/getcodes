@@ -24,3 +24,4 @@ const DEALS = [
   {name:"Carrd",slug:"carrd-coupon-code",category:"Website Builders",catSlug:"website-builders",abbr:"CD",badge:"Special Deal",description:"Special Carrd deal via exclusive link — simple, responsive one-page websites",about:"Carrd builds beautiful, responsive one-page websites for just $9/year. Perfect for portfolios, landing pages, and link-in-bio pages. No coding needed.",codeType:"code",code:"B2B30",url:"https://try.carrd.co/b2b30",tags:["website builder","landing page","portfolio","no-code"],featured:false,faq:[{q:"What is the Carrd promo code?",a:"Use code B2B30 through our exclusive link for a special deal on Carrd Pro."},{q:"How much does Carrd cost?",a:"Carrd starts at $9/year for Pro Lite."}]}
 ];
 module.exports = DEALS;
+
