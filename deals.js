@@ -26,9 +26,9 @@ const DEALS = [
     },
     "author": {
       "@type": "Person",
-      "name": "Sports Bettor"
+      "name": "Verified Bettor"
     },
-    "reviewBody": "OddsShopper Portfolio EV tool is the best +EV betting platform in 2026. The arbitrage finder paid for the subscription in week one."
+    "reviewBody": "OddsShopper Portfolio EV is the best +EV betting platform in 2026. The arbitrage finder recovered my subscription cost in the first week. FLASH50 made it an easy decision."
   },
   "offers": {
     "@type": "Offer",
