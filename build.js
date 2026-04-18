@@ -267,13 +267,27 @@ const faqSchemaHome = JSON.stringify({
 
 const homepageHTML = `<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>GetCodes — Verified Promo Codes for AI Tools, SaaS & Trading (2026)</title>
-<meta name="description" content="Save on ${DEALS.length}+ AI tools, SaaS, trading platforms and more. Verified promo codes and exclusive referral deals updated April 2026.">
+<title>GetCodes — Verified Promo & Discount Codes for AI Tools, SaaS, Betting & Trading (2026)</title>
+<meta name="description" content="GetCodes — verified promo codes and discount codes for AI tools, SaaS, sports betting, trading, and hosting. 22+ deals updated monthly. Every code tested.">
 <link rel="canonical" href="https://getcodes.online/">
 <meta property="og:title" content="GetCodes — Verified Promo Codes for AI Tools, SaaS & Trading"><meta property="og:description" content="Save on ${DEALS.length}+ AI tools and SaaS with verified promo codes."><meta property="og:url" content="https://getcodes.online/"><meta property="og:type" content="website">
 ${FONTS}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"GetCodes","url":"https://getcodes.online/","description":"Verified promo codes for AI tools, SaaS, and trading platforms."}</script>
 <script type="application/ld+json">${faqSchemaHome}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GetCodes",
+  "url": "https://www.getcodes.online",
+  "description": "Verified promo codes for AI tools, SaaS, sports betting, trading and hosting",
+  "sameAs": [
+    "https://instagram.com/bedanta.exp",
+    "https://x.com/bedanta",
+    "https://youtube.com/@bedanta"
+  ]
+}
+</script>
 <style>${CSS}
 .hero{padding:7rem 0 2.5rem;text-align:center;position:relative}.hero::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,230,118,.06) 0%,transparent 70%);pointer-events:none}
 .hero h1{font-family:var(--font-display);font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;letter-spacing:-.04em;line-height:1.12;margin-bottom:.8rem;position:relative}
@@ -294,7 +308,7 @@ ${FONTS}
 ${NAV}${TOAST}
 <div class="wrap">
 <section class="hero">
-<h1>Save on the tools <em>you actually use.</em></h1>
+<h1>Verified Promo Codes for AI Tools, SaaS & Betting (2026)</h1>
 <p class="hero-sub">Verified promo codes &amp; referral deals for ${DEALS.length}+ AI tools, SaaS, trading platforms &amp; more. Every code tested.</p>
 <div class="hero-stats"><div class="hero-stat"><strong>${DEALS.length}+</strong><span>Verified Deals</span></div><div class="hero-stat"><strong>${categories.length}</strong><span>Categories</span></div><div class="hero-stat"><strong>Apr 2026</strong><span>Last Updated</span></div></div>
 <div class="search-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="text" id="search" placeholder="Search tools — Submagic, HeyGen, Emergent..." autocomplete="off"><div class="search-results" id="sr"></div></div>
@@ -313,7 +327,7 @@ ${blogSection}
 <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What types of tools does GetCodes cover?</div><div class="faq-a">AI video tools, coding platforms, SEO tools, social media, automation, hosting, website builders, and trading platforms.</div></div>
 <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How often are codes updated?</div><div class="faq-a">All codes are verified at least monthly. Featured deals are checked weekly.</div></div>
 </div>
-<div class="marquee-wrap"><div class="marquee">${marqueeLinks}<span class="sep">•</span>${marqueeLinks}<span class="sep">•</span></div></div>
+<div class="marquee-wrap"><div class="marquee">${marqueeLinks}<span class="sep">•</span><div aria-hidden="true" style="display:contents">${marqueeLinks}</div><span class="sep">•</span></div></div>
 </div>${FOOTER}
 <script>
 const D=${searchData};
@@ -331,15 +345,15 @@ console.log('  ✅ Homepage');
 // ══════════════════════════════════════════════
 // Sitemap
 const allURLs = [
-  { loc: 'https://getcodes.online/', freq: 'daily', priority: '1.0' },
-  { loc: 'https://getcodes.online/blog/', freq: 'weekly', priority: '0.7' },
-  ...DEALS.map(d => ({ loc: `https://getcodes.online/${d.slug}/`, freq: 'weekly', priority: '0.8' })),
-  ...BLOG_POSTS.map(p => ({ loc: `https://getcodes.online/blog/${p.slug}/`, freq: 'monthly', priority: '0.7' }))
+  { loc: 'https://www.getcodes.online/', freq: 'daily', priority: '1.0' },
+  { loc: 'https://www.getcodes.online/blog/', freq: 'weekly', priority: '0.7' },
+  ...DEALS.map(d => ({ loc: `https://www.getcodes.online/${d.slug}/`, freq: 'weekly', priority: '0.8' })),
+  ...BLOG_POSTS.map(p => ({ loc: `https://www.getcodes.online/blog/${p.slug}/`, freq: 'monthly', priority: '0.7' }))
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${allURLs.map(u => `<url><loc>${u.loc}</loc><changefreq>${u.freq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>`;
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), sitemap);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://getcodes.online/sitemap.xml\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://www.getcodes.online/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, 'google1038d475c843ced0.html'), 'google-site-verification: google1038d475c843ced0.html');
 fs.writeFileSync(path.join(OUT, 'vercel.json'), JSON.stringify({ cleanUrls: true, trailingSlash: true, headers: [{ source: "/(.*)", headers: [{ key: "X-Content-Type-Options", value: "nosniff" }, { key: "X-Frame-Options", value: "DENY" }] }, { source: "/sitemap.xml", headers: [{ key: "Content-Type", value: "application/xml" }] }] }, null, 2));
 
