@@ -344,13 +344,38 @@ console.log('  ✅ Homepage');
 // 4. STATIC FILES
 // ══════════════════════════════════════════════
 // Sitemap
-const allURLs = [
-  { loc: 'https://www.getcodes.online/', freq: 'daily', priority: '1.0' },
-  { loc: 'https://www.getcodes.online/blog/', freq: 'weekly', priority: '0.7' },
-  ...DEALS.map(d => ({ loc: `https://www.getcodes.online/${d.slug}/`, freq: 'weekly', priority: '0.8' })),
-  ...BLOG_POSTS.map(p => ({ loc: `https://www.getcodes.online/blog/${p.slug}/`, freq: 'monthly', priority: '0.7' }))
-];
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${allURLs.map(u => `<url><loc>${u.loc}</loc><changefreq>${u.freq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>`;
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.getcodes.online/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.getcodes.online/blog/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.getcodes.online/blog/revid-ai-vs-klap/</loc><lastmod>2026-04-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/blog/best-ai-video-editing-tools-2026/</loc><lastmod>2026-04-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/blog/submagic-vs-captions-app/</loc><lastmod>2026-04-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/blog/how-to-use-oddsshopper-promo-code-flash50/</loc><lastmod>2026-04-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/oddsshopper-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.getcodes.online/submagic-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/revid-ai-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/heygen-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/vizard-ai-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/taja-ai-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/mindgrasp-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/solvely-ai-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/adgpt-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/aragon-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/emergent-ai-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/marblism-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/clicksites-ai-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/make-com-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/hostinger-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/outrank-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/feather-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/postsyncer-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/superx-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/funding-pips-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/godel-terminal-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getcodes.online/carrd-coupon-code/</loc><lastmod>2026-04-18</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>`;
+const allURLs = { length: 28 };
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), sitemap);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: https://www.getcodes.online/sitemap.xml\n`);
